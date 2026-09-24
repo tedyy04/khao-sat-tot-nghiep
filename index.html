@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lễ Tốt Nghiệp — Hoàng Hiếu | TDTU</title>
+  <meta name="description" content="Khảo sát tham dự lễ tốt nghiệp của Hoàng Hiếu tại Đại học Tôn Đức Thắng, cuối tháng 10/2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #FFCEE3;
+      --blue: #678EC9;
+      --navy: #262277;
+      --navy-deep: #1a1a5e;
+      --white: #ffffff;
+      --white-10: rgba(255,255,255,0.10);
+      --white-15: rgba(255,255,255,0.15);
+      --white-20: rgba(255,255,255,0.20);
+      --white-60: rgba(255,255,255,0.60);
+      --white-80: rgba(255,255,255,0.80);
+      --white-90: rgba(255,255,255,0.90);
+      --shadow: rgba(38, 34, 119, 0.25);
+      --radius: 20px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--blue) 50%, var(--navy) 100%);
+      background-attachment: fixed;
+      color: var(--white);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ===== ANIMATED BACKGROUND ===== */
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-orbs .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      animation: orbFloat 12s ease-in-out infinite alternate;
+    }
+
+    .orb:nth-child(1) {
+      width: 400px; height: 400px;
+      background: var(--pink);
+      top: -10%; left: -5%;
+      animation-duration: 14s;
+    }
+    .orb:nth-child(2) {
+      width: 350px; height: 350px;
+      background: var(--blue);
+      top: 40%; right: -10%;
+      animation-duration: 10s;
+      animation-delay: -3s;
+    }
+    .orb:nth-child(3) {
+      width: 300px; height: 300px;
+      background: var(--navy);
+      bottom: -5%; left: 30%;
+      animation-duration: 16s;
+      animation-delay: -6s;
+    }
+    .orb:nth-child(4) {
+      width: 200px; height: 200px;
+      background: var(--pink);
+      top: 60%; left: 10%;
+      animation-duration: 11s;
+      animation-delay: -2s;
+    }
+
+    @keyframes orbFloat {
+      0%   { transform: translate(0, 0) scale(1); }
+      33%  { transform: translate(40px, -30px) scale(1.1); }
+      66%  { transform: translate(-20px, 20px) scale(0.95); }
+      100% { transform: translate(30px, -10px) scale(1.05); }
+    }
+
+    /* ===== CONFETTI CANVAS ===== */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding-top: 20px;
+      animation: fadeSlideUp 0.8s ease-out;
+    }
+
+    .hero .cap-icon {
+      font-size: 64px;
+      display: inline-block;
+      animation: capBounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 4px 20px var(--shadow));
+    }
+
+    @keyframes capBounce {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50%      { transform: translateY(-12px) rotate(5deg); }
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-top: 16px;
+      line-height: 1.2;
+      text-shadow: 0 2px 20px var(--shadow);
+    }
+
+    .hero h1 .name-highlight {
+      background: linear-gradient(135deg, var(--pink), var(--white));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero .subtitle {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--white-80);
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== GLASS CARD ===== */
+    .glass-card {
+      width: 100%;
+      background: var(--white-10);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--white-20);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: 0 8px 32px var(--shadow);
+      animation: fadeSlideUp 0.8s ease-out both;
+    }
+
+    .glass-card:nth-child(2) { animation-delay: 0.15s; }
+    .glass-card:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== EVENT INFO ===== */
+    .event-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .event-info .info-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .info-row .icon-circle {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 50%;
+      background: var(--white-15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border: 1px solid var(--white-20);
+    }
+
+    .info-row .info-text strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .info-row .info-text span {
+      font-size: 0.85rem;
+      color: var(--white-60);
+    }
+
+    .event-msg {
+      margin-top: 8px;
+      padding: 14px 16px;
+      background: var(--white-10);
+      border-radius: 12px;
+      border-left: 3px solid var(--pink);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--white-80);
+      line-height: 1.5;
+    }
+
+    /* ===== FORM ===== */
+    .form-section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--white-90);
+    }
+
+    .form-group input[type="text"] {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--white-20);
+      background: var(--white-10);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group input[type="text"]::placeholder {
+      color: var(--white-60);
+    }
+
+    .form-group input[type="text"]:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(255, 206, 227, 0.25);
+    }
+
+    /* Attendance options */
+    .attendance-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--white-90);
+    }
+
+    .attendance-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .attendance-option {
+      position: relative;
+    }
+
+    .attendance-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .attendance-option label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1.5px solid var(--white-20);
+      background: var(--white-10);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    .attendance-option label:hover {
+      background: var(--white-15);
+      border-color: var(--white-60);
+      transform: translateX(4px);
+    }
+
+    .attendance-option input[type="radio"]:checked + label {
+      border-color: var(--pink);
+      background: rgba(255, 206, 227, 0.15);
+      box-shadow: 0 0 0 3px rgba(255, 206, 227, 0.15);
+    }
+
+    .attendance-option label .option-emoji {
+      font-size: 1.3rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--white-10);
+    }
+
+    .attendance-option input[type="radio"]:checked + label .option-emoji {
+      background: var(--white-20);
+    }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--pink), var(--blue));
+      color: var(--navy-deep);
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .submit-btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 206, 227, 0.35);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .submit-btn:disabled::before { display: none; }
+
+    /* Validation error */
+    .error-msg {
+      color: #ffb3c6;
+      font-size: 0.82rem;
+      margin-top: 6px;
+      display: none;
+      animation: shake 0.4s ease;
+    }
+
+    .error-msg.visible { display: block; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25%      { transform: translateX(-6px); }
+      75%      { transform: translateX(6px); }
+    }
+
+    /* ===== THANK YOU SCREEN ===== */
+    .thank-you-screen {
+      display: none;
+      text-align: center;
+      animation: fadeSlideUp 0.6s ease-out;
+    }
+
+    .thank-you-screen.active {
+      display: block;
+    }
+
+    .thank-you-screen h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-top: 16px;
+    }
+
+    .thank-you-screen p {
+      font-size: 1rem;
+      color: var(--white-80);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .thank-you-screen .back-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 28px;
+      border-radius: 14px;
+      border: 1.5px solid var(--white-20);
+      background: var(--white-10);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .thank-you-screen .back-btn:hover {
+      background: var(--white-20);
+      transform: translateY(-2px);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--white-60);
+      padding-bottom: 20px;
+      animation: fadeSlideUp 1s ease-out 0.5s both;
+    }
+
+    .footer a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    /* ===== LOADING SPINNER ===== */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid var(--navy-deep);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 480px) {
+      .container { padding: 28px 16px 40px; gap: 24px; }
+      .hero h1 { font-size: 1.65rem; }
+      .hero .cap-icon { font-size: 52px; }
+      .glass-card { padding: 22px 18px; }
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .container { padding: 60px 20px 80px; }
+    }
+
+    /* ===== 2026 EDITORIAL REDESIGN ===== */
+    :root {
+      --ink: #262277;
+      --paper: #eef1fa;
+      --paper-bright: #fffafd;
+      --coral: #678ec9;
+      --coral-soft: #ffcee3;
+      --line: rgba(38, 34, 119, 0.16);
+      --muted: #646b91;
+      --shadow: rgba(38, 34, 119, 0.18);
+      --radius: 1.25rem;
+    }
+
+    body {
+      min-height: 100dvh;
+      color: var(--ink);
+      background: #dce2f3;
+      background-image:
+        radial-gradient(circle at 88% 8%, rgba(255, 206, 227, .95), transparent 34rem),
+        radial-gradient(circle at 12% 92%, rgba(38, 34, 119, .68), transparent 38rem),
+        linear-gradient(135deg, #ffcee3 0%, #bfc9e8 38%, #678ec9 68%, #262277 120%);
+      background-attachment: fixed;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    }
+
+    .language-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+      background: rgba(224, 229, 246, .78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+    .language-gate.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .language-panel {
+      width: min(100%, 42rem);
+      padding: clamp(2rem, 6vw, 3.5rem);
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 1.5rem;
+      background: rgba(255, 250, 253, .9);
+      box-shadow: 0 2rem 5rem rgba(38, 34, 119, .24);
+      text-align: left;
+    }
+    .language-kicker {
+      display: block;
+      margin-bottom: 2.75rem;
+      color: var(--coral);
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .16em;
+    }
+    .language-panel h2 {
+      max-width: none;
+      font-size: clamp(1.8rem, 6vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+    .language-panel p { margin-top: 1.2rem; color: var(--muted); line-height: 1.65; }
+    .language-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 2.25rem; }
+    .language-btn {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      background: transparent;
+      color: var(--ink);
+      font: 600 .9rem 'Be Vietnam Pro', sans-serif;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .language-btn:hover { transform: translateY(-2px); border-color: var(--coral); }
+    .language-btn:active { transform: translateY(1px); }
+    .language-btn:focus-visible { outline: 3px solid rgba(103,142,201,.38); outline-offset: 3px; }
+    .language-btn-primary { background: var(--ink); border-color: var(--ink); color: var(--paper-bright); }
+
+    .skip-link {
+      position: fixed; top: .75rem; left: .75rem; z-index: 20;
+      padding: .7rem 1rem; background: var(--ink); color: white; border-radius: .5rem;
+      transform: translateY(-150%); transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .bg-orbs { opacity: .8; }
+    .bg-orbs .orb { filter: none; opacity: 1; animation: none; }
+    .orb:nth-child(1) { width: 11rem; height: 11rem; background: var(--coral); top: -6rem; left: 7%; }
+    .orb:nth-child(2) { width: 1.1rem; height: 1.1rem; background: var(--ink); top: 14%; right: 8%; }
+    .orb:nth-child(3) { width: 8rem; height: 8rem; background: transparent; border: 1px solid var(--coral); bottom: 6%; left: -4rem; }
+    .orb:nth-child(4) { width: 4rem; height: 4rem; background: var(--coral-soft); top: 58%; left: auto; right: -2rem; }
+
+    .container {
+      max-width: 72rem;
+      min-height: 100dvh;
+      padding: 3rem clamp(1.25rem, 4vw, 4rem) 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(22rem, 1.18fr);
+      align-items: start;
+      column-gap: clamp(2rem, 6vw, 6rem);
+      row-gap: 2rem;
+    }
+
+    .hero {
+      position: sticky;
+      top: 3rem;
+      text-align: left;
+      padding: 2rem 0 0;
+      align-self: start;
+    }
+
+    .hero::before {
+      content: 'GRADUATION  /  2026';
+      display: block;
+      margin-bottom: 4.5rem;
+      color: var(--coral);
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .16em;
+    }
+
+    .hero .cap-icon {
+      width: 4.25rem;
+      height: 4.25rem;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--paper-bright);
+      border-radius: 50% 50% 50% 12%;
+      font-family: 'DM Mono', monospace;
+      font-size: 1rem;
+      animation: none;
+      filter: none;
+      transform: rotate(-8deg);
+    }
+
+    .hero h1 {
+      max-width: 8ch;
+      margin-top: 2rem;
+      font-size: clamp(3rem, 6.3vw, 5.8rem);
+      line-height: .92;
+      letter-spacing: -.065em;
+      text-shadow: none;
+      text-wrap: balance;
+    }
+
+    .hero h1 .name-highlight {
+      color: var(--coral);
+      background: none;
+      -webkit-text-fill-color: currentColor;
+    }
+
+    .hero .subtitle {
+      max-width: 28ch;
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .glass-card {
+      background: rgba(255, 250, 253, .82);
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: var(--radius);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      color: var(--ink);
+      box-shadow: 0 1.5rem 4rem rgba(38, 34, 119, .18), inset 0 1px rgba(255,255,255,.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    #event-info-card { margin-top: 5rem; transform: rotate(.6deg); }
+    #survey-card { transform: translateX(-1.5rem); }
+
+    .event-info { gap: 0; }
+    .event-info .info-row { align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .event-info .info-row:first-child { padding-top: 0; }
+    .event-info .info-row:last-child { border-bottom: 0; }
+    .info-row .icon-circle {
+      width: 2.25rem; height: 2.25rem; min-width: 2.25rem;
+      background: transparent; border: 1px solid var(--line); border-radius: .6rem;
+      font-size: .95rem;
+    }
+    .info-row .color-swatch {
+      position: relative;
+      overflow: hidden;
+      border: 0;
+      box-shadow: inset 0 0 0 1px rgba(38, 34, 119, .08), 0 .35rem .8rem rgba(38, 34, 119, .1);
+    }
+    .info-row .color-swatch::after {
+      content: '';
+      position: absolute;
+      inset: .35rem;
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: .35rem;
+    }
+    .swatch-coral { background: var(--coral-soft) !important; }
+    .swatch-ink { background: var(--coral) !important; }
+    .swatch-blush { background: var(--ink) !important; }
+    .info-row .info-text strong { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    .info-row .info-text span { display: block; margin-top: .25rem; color: var(--muted); line-height: 1.55; }
+    .event-msg {
+      margin-top: 1.25rem; padding: 1.25rem 0 0; background: none; border: 0;
+      color: var(--ink); font-size: .9rem; line-height: 1.7;
+    }
+
+    .form-section h2 { margin-bottom: 2rem; text-align: left; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.04em; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label, .attendance-label { color: var(--ink); font-size: .82rem; font-weight: 600; }
+    .form-group input[type="text"] {
+      padding: 1rem 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+      background: transparent; color: var(--ink); font-size: 1.05rem; backdrop-filter: none;
+    }
+    .form-group input[type="text"]::placeholder { color: #9b9b9b; }
+    .form-group input[type="text"]:focus { border-color: var(--coral); box-shadow: 0 2px 0 var(--coral); }
+
+    .attendance-options { gap: .6rem; }
+    .attendance-option label {
+      min-height: 4rem; margin: 0; padding: .8rem 1rem; border: 1px solid var(--line);
+      border-radius: .85rem; background: rgba(255, 206, 227, .2); color: var(--ink);
+    }
+    .attendance-option label:hover { background: var(--paper-bright); border-color: rgba(38,34,119,.34); transform: translateX(.25rem); }
+    .attendance-option input[type="radio"]:focus-visible + label { outline: 3px solid rgba(103,142,201,.35); outline-offset: 2px; }
+    .attendance-option input[type="radio"]:checked + label { border-color: var(--coral); background: rgba(103,142,201,.13); box-shadow: inset .22rem 0 var(--coral); }
+    .attendance-option label .option-emoji { background: transparent; font-family: 'DM Mono', monospace; font-size: .8rem; color: var(--coral); }
+    .attendance-option input[type="radio"]:checked + label .option-emoji { background: var(--coral); color: white; }
+
+    .submit-btn {
+      padding: 1.05rem 1.25rem; border-radius: .85rem; background: var(--ink); color: var(--paper-bright);
+      font-size: .95rem; letter-spacing: .01em; box-shadow: .35rem .35rem 0 var(--coral);
+    }
+    .submit-btn::before { display: none; }
+    .submit-btn:hover { transform: translate(-2px, -2px); box-shadow: .55rem .55rem 0 var(--coral); }
+    .submit-btn:active { transform: translate(.2rem, .2rem); box-shadow: .15rem .15rem 0 var(--coral); }
+    .submit-btn:focus-visible, .back-btn:focus-visible, input:focus-visible { outline: 3px solid rgba(103,142,201,.4); outline-offset: 3px; }
+    .error-msg { color: #b73b2b; }
+    .spinner { border-color: rgba(255,255,255,.35); border-top-color: white; }
+
+    .thank-you-screen { grid-column: 2; margin-top: 8rem; }
+    .thank-you-screen p { color: var(--muted); }
+    .thank-you-screen .back-btn { color: var(--ink); border-color: var(--line); background: transparent; }
+    .footer { grid-column: 1 / -1; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+    @media (max-width: 767px) {
+      .container { display: flex; min-height: auto; padding: 1.5rem 1rem 2rem; gap: 1rem; }
+      .language-panel { padding: 2rem 1.5rem; }
+      .language-panel h2 { font-size: clamp(1.5rem, 7.5vw, 2.2rem); }
+      .hero { position: relative; top: auto; width: 100%; padding: 1.5rem .4rem 2rem; }
+      .hero::before { margin-bottom: 3rem; }
+      .hero h1 { max-width: 9ch; font-size: clamp(3.2rem, 16vw, 4.5rem); }
+      .hero .subtitle { font-size: .92rem; }
+      #event-info-card { margin-top: 0; transform: rotate(.5deg); }
+      #survey-card { transform: none; }
+      .glass-card { padding: 1.5rem 1.15rem; }
+      .thank-you-screen { margin-top: 0; }
+      .footer { margin-top: 1.5rem; line-height: 1.6; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      #confetti-canvas { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="language-gate" id="language-gate" role="dialog" aria-modal="true" aria-labelledby="language-title">
+    <div class="language-panel">
+      <span class="language-kicker">WELCOME / XIN CHÀO</span>
+      <h2 id="language-title">Choose your language</h2>
+      <p>Bạn muốn xem trang này bằng ngôn ngữ nào?</p>
+      <div class="language-actions">
+        <button type="button" class="language-btn language-btn-primary" data-language="vi">Tiếng Việt</button>
+        <button type="button" class="language-btn" data-language="en">English</button>
+      </div>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#survey-card" data-i18n="skipLink">Đi đến phần phản hồi</a>
+
+  <!-- Animated background orbs -->
+  <div class="bg-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <main class="container">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero-section">
+      <div class="cap-icon" aria-hidden="true">t3ddy</div>
+      <h1>
+        GRAD of<br/>
+        <span class="name-highlight">Hoàng Hiếu</span>
+      </h1>
+      <p class="subtitle" data-i18n="subtitle">Khảo sát những con người có thể tham dự Lễ tốt nghiệp của toi!!!</p>
+    </section>
+
+    <!-- ===== EVENT INFO ===== -->
+    <div class="glass-card" id="event-info-card">
+      <div class="event-info">
+        <div class="info-row">
+          <div class="icon-circle color-swatch swatch-coral" aria-hidden="true"></div>
+          <div class="info-text">
+            <strong data-i18n="timeLabel">Thời gian</strong>
+            <span data-i18n="timeValue">Cuối tháng 10/2026 (sẽ báo ngày cụ thể ngay khi có lịch nhé kkk)</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="icon-circle color-swatch swatch-ink" aria-hidden="true"></div>
+          <div class="info-text">
+            <strong data-i18n="locationLabel">Địa điểm</strong>
+            <span data-i18n="locationValue">Trường Đại học Tôn Đức Thắng (19 Nguyễn Hữu Thọ, phường Tân Hưng, Quận 7 (cũ), TP. Hồ Chí Minh)</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="icon-circle color-swatch swatch-blush" aria-hidden="true"></div>
+          <div class="info-text">
+            <strong data-i18n="eventLabel">Sự kiện</strong>
+            <span data-i18n="eventValue">Buổi Lễ tốt nghiệp của toi!</span>
+          </div>
+        </div>
+      </div>
+      <div class="event-msg" data-i18n="eventMessage">
+        "Bốn năm là một hành trình dài, mong bạn sẽ có mặt để cùng mình lưu lại kỷ niệm nhé."
+      </div>
+    </div>
+
+    <!-- ===== SURVEY FORM ===== -->
+    <div class="glass-card form-section" id="survey-card">
+      <h2 data-i18n="formTitle">Tui khảo sát tí nhee</h2>
+      <form id="rsvp-form" autocomplete="off">
+        <div class="form-group">
+          <label for="guest-name" data-i18n="nameLabel">Tui hay gọi bạn là gì ta?</label>
+          <input type="text" id="guest-name" name="name" placeholder="Ví dụ: Quỳnh Nhi" maxlength="80" aria-describedby="name-error" required />
+          <div class="error-msg" id="name-error" role="alert" data-i18n="nameError">Vui lòng nhập họ tên của bạn nhé.</div>
+        </div>
+
+        <div class="form-group">
+          <span class="attendance-label" data-i18n="attendanceLabel">Bạn sẽ tham dự chứ?</span>
+          <div class="attendance-options" id="attendance-options">
+            <div class="attendance-option">
+              <input type="radio" id="att-yes" name="attendance" value="Có" />
+              <label for="att-yes">
+                <span class="option-emoji" aria-hidden="true">01</span>
+                <span data-i18n="yesOption">Có chứ, hẹn gặp Hiếu hôm đó nhaa!</span>
+              </label>
+            </div>
+            <div class="attendance-option">
+              <input type="radio" id="att-no" name="attendance" value="Không" />
+              <label for="att-no">
+                <span class="option-emoji" aria-hidden="true">02</span>
+                <span data-i18n="noOption">Tiếc quá, tui hong đến được rồi...</span>
+              </label>
+            </div>
+            <div class="attendance-option">
+              <input type="radio" id="att-maybe" name="attendance" value="Chưa chắc" />
+              <label for="att-maybe">
+                <span class="option-emoji" aria-hidden="true">03</span>
+                <span data-i18n="maybeOption">Để mình suy nghĩ nhaa!!</span>
+              </label>
+            </div>
+          </div>
+          <div class="error-msg" id="attendance-error" role="alert" data-i18n="attendanceError">Vui lòng chọn một câu trả lời nhé.</div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn" data-i18n="submitButton">
+          Gửi phản hồi
+        </button>
+      </form>
+    </div>
+
+    <!-- ===== THANK YOU ===== -->
+    <div class="glass-card thank-you-screen" id="thank-you" aria-live="polite">
+      <h2 id="thank-title">Cảm ơn bạn!</h2>
+      <p id="thank-message">Mình đã nhận được phản hồi của bạn rồi.</p>
+      <button class="back-btn" id="back-btn" data-i18n="backButton">← Gửi lại phản hồi khác</button>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+      T3ddy.cr3
+    </div>
+
+  </main>
+
+  <script>
+    // ===== CONFIG =====
+    // 🔗 Paste your Google Apps Script Web App URL here:
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwugiOJt9ntutkbwlNuXWO4vM0pkWjjuk9XQQFNbLvRpMHBWSG1WXBjsYH3BsoZ3LQMSg/exec';
+
+    // ===== DOM ELEMENTS =====
+    const form = document.getElementById('rsvp-form');
+    const nameInput = document.getElementById('guest-name');
+    const nameError = document.getElementById('name-error');
+    const attendanceError = document.getElementById('attendance-error');
+    const submitBtn = document.getElementById('submit-btn');
+    const surveyCard = document.getElementById('survey-card');
+    const eventInfoCard = document.getElementById('event-info-card');
+    const thankYou = document.getElementById('thank-you');
+    const thankTitle = document.getElementById('thank-title');
+    const thankMessage = document.getElementById('thank-message');
+    const backBtn = document.getElementById('back-btn');
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const languageGate = document.getElementById('language-gate');
+    let currentLanguage = 'vi';
+
+    const translations = {
+      vi: {
+        skipLink: 'Đi đến phần phản hồi',
+        subtitle: 'Khảo sát những con người có thể tham dự Lễ tốt nghiệp của toi!!!',
+        timeLabel: 'Thời gian',
+        timeValue: 'Cuối tháng 10/2026 (sẽ báo ngày cụ thể ngay khi có lịch nhé kkk)',
+        locationLabel: 'Địa điểm',
+        locationValue: 'Trường Đại học Tôn Đức Thắng (19 Nguyễn Hữu Thọ, phường Tân Hưng, Quận 7 (cũ), TP. Hồ Chí Minh)',
+        eventLabel: 'Sự kiện',
+        eventValue: 'Buổi Lễ tốt nghiệp của toi!',
+        eventMessage: '"Bốn năm là một hành trình dài, mong bạn sẽ có mặt để cùng mình lưu lại kỷ niệm nhé."',
+        formTitle: 'Tui khảo sát tí nhee',
+        nameLabel: 'Tui hay gọi bạn là gì ta?',
+        namePlaceholder: 'Ví dụ: Quỳnh Nhi',
+        nameError: 'Vui lòng nhập tên của bạn nhé.',
+        attendanceLabel: 'Bạn sẽ tham dự chứ?',
+        yesOption: 'Có chứ, hẹn gặp Hiếu hôm đó nhaa!',
+        noOption: 'Tiếc quá, tui hong đến được rồi...',
+        maybeOption: 'Để mình suy nghĩ nhaa!!',
+        attendanceError: 'Vui lòng chọn một câu trả lời nhé.',
+        submitButton: 'Gửi phản hồi',
+        loading: 'Đang gửi...',
+        backButton: '← Gửi lại phản hồi khác'
+      },
+      en: {
+        skipLink: 'Skip to RSVP form',
+        subtitle: 'Just checking who might be able to make it to my graduation!',
+        timeLabel: 'When',
+        timeValue: 'Late October 2026 (I’ll share the exact date as soon as I have it)',
+        locationLabel: 'Where',
+        locationValue: 'Ton Duc Thang University (19 Nguyen Huu Tho Street, Tan Hung Ward, Ho Chi Minh City)',
+        eventLabel: 'What',
+        eventValue: 'My graduation ceremony!',
+        eventMessage: '"Four years has been quite a journey. I’d love to have you there to make one more memory together."',
+        formTitle: 'A quick RSVP',
+        nameLabel: 'What should I call you?',
+        namePlaceholder: 'For example: Naomi',
+        nameError: 'Please enter your name.',
+        attendanceLabel: 'Do you think you can make it?',
+        yesOption: 'Yes, see you there!',
+        noOption: 'Sadly, I can’t make it...',
+        maybeOption: 'Not sure yet — let me check!',
+        attendanceError: 'Please choose an answer.',
+        submitButton: 'Send my response',
+        loading: 'Sending...',
+        backButton: '← Send another response'
+      }
+    };
+
+    function setLanguage(language) {
+      currentLanguage = language;
+      const copy = translations[language];
+      document.documentElement.lang = language;
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.dataset.i18n;
+        if (copy[key]) element.textContent = copy[key];
+      });
+      nameInput.placeholder = copy.namePlaceholder;
+      languageGate.classList.add('is-hidden');
+      window.setTimeout(() => nameInput.focus(), 350);
+    }
+
+    document.querySelectorAll('[data-language]').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.language));
+    });
+
+    // ===== FORM SUBMISSION =====
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Reset errors
+      nameError.classList.remove('visible');
+      attendanceError.classList.remove('visible');
+
+      // Validate
+      const name = nameInput.value.trim();
+      const attendance = document.querySelector('input[name="attendance"]:checked');
+      let hasError = false;
+
+      if (!name) {
+        nameError.classList.add('visible');
+        hasError = true;
+      }
+      if (!attendance) {
+        attendanceError.classList.add('visible');
+        hasError = true;
+      }
+      if (hasError) return;
+
+      // Disable button & show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="spinner"></span>${translations[currentLanguage].loading}`;
+
+      const data = {
+        name: name,
+        attendance: attendance.value,
+        timestamp: new Date().toLocaleString('vi-VN')
+      };
+
+      try {
+        if (GOOGLE_SCRIPT_URL) {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+        }
+
+        // Show thank you
+        showThankYou(attendance.value);
+      } catch (err) {
+        console.error('Submit error:', err);
+        // Still show thank you even if network fails
+        showThankYou(attendance.value);
+      }
+    });
+
+    // ===== THANK YOU DISPLAY =====
+    function showThankYou(answer) {
+      surveyCard.style.display = 'none';
+      eventInfoCard.style.display = 'none';
+
+      const messages = currentLanguage === 'en' ? {
+        'Có': { title: 'See you there!', text: 'Glad you can make it. I’ll send you the exact time once it’s confirmed.' },
+        'Không': { title: 'Got it.', text: 'Sorry we won’t meet that day, but thanks for letting me know.' },
+        'Chưa chắc': { title: 'No worries.', text: 'Let me know when you’re sure. I hope you can make it!' }
+      } : {
+        'Có': { title: 'Hẹn gặp bạn!', text: 'Mình rất vui khi biết bạn sẽ đến! Hẹn gặp bạn tại lễ tốt nghiệp nhé!' },
+        'Không': { title: 'Hơi tiếc nhỉ', text: 'Vậy là hẹn gặp nhau ở một cột mốc mới hơn nha!' },
+        'Chưa chắc': { title: 'Mình giữ một chỗ cho bạn nhé?', text: 'Hy vọng bạn sắp xếp được nhé!' }
+      };
+
+      const msg = messages[answer] || messages['Có'];
+      thankTitle.textContent = msg.title;
+      thankMessage.textContent = msg.text;
+
+      thankYou.classList.add('active');
+
+      // Trigger confetti for "Có"
+      if (answer === 'Có') {
+        launchConfetti();
+      }
+    }
+
+    // ===== BACK BUTTON =====
+    backBtn.addEventListener('click', () => {
+      thankYou.classList.remove('active');
+      surveyCard.style.display = '';
+      eventInfoCard.style.display = '';
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = translations[currentLanguage].submitButton;
+    });
+
+    // ===== CONFETTI ===== 
+    const ctx = confettiCanvas.getContext('2d');
+    let confettiPieces = [];
+    let confettiAnimationId = null;
+
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function launchConfetti() {
+      confettiPieces = [];
+      const colors = ['#FFCEE3', '#678EC9', '#262277', '#FFD700', '#FF6B9D', '#C084FC', '#67E8F9', '#FDE68A'];
+
+      for (let i = 0; i < 150; i++) {
+        confettiPieces.push({
+          x: Math.random() * confettiCanvas.width,
+          y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+          w: Math.random() * 10 + 5,
+          h: Math.random() * 6 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 4,
+          vy: Math.random() * 3 + 2,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10,
+          opacity: 1
+        });
+      }
+
+      if (confettiAnimationId) cancelAnimationFrame(confettiAnimationId);
+      animateConfetti();
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+      let alive = false;
+      confettiPieces.forEach(p => {
+        if (p.opacity <= 0) return;
+        alive = true;
+
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.04;
+        p.rotation += p.rotationSpeed;
+
+        if (p.y > confettiCanvas.height + 20) {
+          p.opacity -= 0.02;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.globalAlpha = Math.max(0, p.opacity);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+
+      if (alive) {
+        confettiAnimationId = requestAnimationFrame(animateConfetti);
+      } else {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        confettiAnimationId = null;
+      }
+    }
+
+    // ===== INITIAL MINI CONFETTI ON LOAD =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const colors = ['#FFCEE3', '#678EC9', '#FFD700'];
+        confettiPieces = [];
+        for (let i = 0; i < 40; i++) {
+          confettiPieces.push({
+            x: Math.random() * confettiCanvas.width,
+            y: -20 - Math.random() * 200,
+            w: Math.random() * 8 + 3,
+            h: Math.random() * 5 + 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vx: (Math.random() - 0.5) * 2,
+            vy: Math.random() * 1.5 + 1,
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 6,
+            opacity: 0.8
+          });
+        }
+        animateConfetti();
+      }, 600);
+    });
+  </script>
+</body>
+</html>
