@@ -31,7 +31,8 @@ function doPost(e) {
     sheet.appendRow([
       data.timestamp || new Date().toLocaleString('vi-VN'),
       data.name || '',
-      data.attendance || ''
+      data.attendance || '',
+      data.message || ''
     ]);
 
     return ContentService
