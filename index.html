@@ -467,6 +467,7 @@
       --muted: #646b91;
       --shadow: rgba(38, 34, 119, 0.18);
       --radius: 1.25rem;
+      --radius-control: .75rem;
     }
 
     body {
@@ -511,7 +512,7 @@
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, .78);
-      border-radius: 1.5rem;
+      border-radius: var(--radius);
       background:
         radial-gradient(circle at 12% 5%, rgba(255,255,255,.82), transparent 38%),
         linear-gradient(135deg, rgba(255,255,255,.68), rgba(255,220,235,.26) 48%, rgba(166,190,225,.24));
@@ -551,14 +552,14 @@
       font-size: clamp(1.8rem, 6vw, 3.4rem);
       line-height: 1;
       letter-spacing: -.06em;
-      white-space: nowrap;
+      text-wrap: balance;
     }
     .language-panel p { margin-top: 1.2rem; color: var(--muted); line-height: 1.65; }
     .language-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 2.25rem; }
     .language-btn {
       padding: 1rem;
       border: 1px solid var(--line);
-      border-radius: .75rem;
+      border-radius: var(--radius-control);
       background: transparent;
       color: var(--ink);
       font: 600 .9rem 'Be Vietnam Pro', sans-serif;
@@ -573,16 +574,11 @@
     .skip-link {
       position: fixed; top: .75rem; left: .75rem; z-index: 20;
       padding: .7rem 1rem; background: var(--ink); color: white; border-radius: .5rem;
-      transform: translateY(-150%); transition: transform .2s ease;
+      transform: translateY(calc(-100% - 1.5rem)); transition: transform .2s ease;
     }
     .skip-link:focus { transform: translateY(0); }
 
-    .bg-orbs { opacity: .8; }
-    .bg-orbs .orb { filter: none; opacity: 1; animation: none; }
-    .orb:nth-child(1) { width: 11rem; height: 11rem; background: var(--coral); top: -6rem; left: 7%; }
-    .orb:nth-child(2) { width: 1.1rem; height: 1.1rem; background: var(--ink); top: 14%; right: 8%; }
-    .orb:nth-child(3) { width: 8rem; height: 8rem; background: transparent; border: 1px solid var(--coral); bottom: 6%; left: -4rem; }
-    .orb:nth-child(4) { width: 4rem; height: 4rem; background: var(--coral-soft); top: 58%; left: auto; right: -2rem; }
+    .bg-orbs { display: none; }
 
     .container {
       max-width: 72rem;
@@ -656,6 +652,7 @@
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.7;
+      text-wrap: pretty;
     }
 
     .glass-card {
@@ -676,6 +673,7 @@
         inset 0 -1px 0 rgba(38,34,119,.12);
       backdrop-filter: blur(28px) saturate(155%) contrast(102%);
       -webkit-backdrop-filter: blur(28px) saturate(155%) contrast(102%);
+      animation: none;
     }
     .glass-card::before {
       content: '';
@@ -702,8 +700,8 @@
 
     .hero { grid-column: 1; grid-row: 1 / span 2; }
     #event-info-card, #survey-card { grid-column: 2; }
-    #event-info-card { margin-top: 5rem; transform: rotate(.6deg); }
-    #survey-card { transform: translateX(-1.5rem); }
+    #event-info-card { margin-top: 4rem; }
+    #survey-card { transform: translateX(-1rem); }
 
     .event-meta {
       display: grid;
@@ -746,11 +744,12 @@
     .meta-secondary { display: block; margin-top: 0; color: var(--muted); font-size: .75rem; line-height: 1.5; }
     .contact-panel {
       margin-top: 1.15rem;
-      padding: 1rem;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 1rem;
-      background: rgba(255,255,255,.22);
-      box-shadow: inset 0 1px rgba(255,255,255,.75);
+      padding: 1.15rem 0 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
     }
     .contact-heading {
       display: flex;
@@ -770,20 +769,21 @@
       min-width: 0;
       padding: .9rem 1rem;
       border: 1px solid rgba(38,34,119,.14);
-      border-radius: .85rem;
+      border-radius: var(--radius-control);
       color: var(--ink);
       text-decoration: none;
-      box-shadow: 0 .45rem 1rem rgba(38,34,119,.08), inset 0 1px rgba(255,255,255,.72);
-      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: none;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
-    .contact-card:hover { transform: translateY(-2px); box-shadow: 0 .7rem 1.4rem rgba(38,34,119,.14), inset 0 1px rgba(255,255,255,.72); }
+    .contact-card:hover { transform: translateY(-2px); }
+    .contact-card:active { transform: translateY(0) scale(.985); }
+    .contact-card:focus-visible { outline: 3px solid rgba(103,142,201,.4); outline-offset: 3px; }
     .contact-card-primary {
-      border-color: rgba(38,34,119,.55);
-      background: linear-gradient(135deg, #262277, #3e48a0);
+      border-color: var(--ink);
+      background: var(--ink);
       color: #fff;
-      box-shadow: 0 .65rem 1.35rem rgba(38,34,119,.24), inset 0 1px rgba(255,255,255,.22);
     }
-    .contact-card-secondary { background: rgba(255,255,255,.42); }
+    .contact-card-secondary { background: rgba(255,255,255,.24); }
     .contact-badge {
       grid-column: 1 / -1;
       width: fit-content;
@@ -804,7 +804,9 @@
       border: 0;
       border-bottom: 1px solid var(--line);
       background: none;
-      color: var(--ink); font-size: .9rem; line-height: 1.7;
+      max-width: 64ch;
+      color: var(--ink); font-size: .95rem; line-height: 1.75;
+      text-wrap: pretty;
     }
 
     .calendar-art {
@@ -814,13 +816,22 @@
       margin: 0 0 1.4rem;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.82);
-      border-radius: 1.25rem;
+      border-radius: var(--radius);
       background: rgba(255,255,255,.28);
       box-shadow: 0 1rem 2.6rem rgba(38,34,119,.2), inset 0 1px rgba(255,255,255,.9);
     }
     .calendar-art img { width: 100%; height: 100%; display: block; object-fit: cover; }
-    .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; margin-top: 1.4rem; }
-    .countdown-item { padding: .75rem .35rem; border: 1px solid rgba(255,255,255,.62); border-radius: .75rem; background: rgba(255,255,255,.25); text-align: center; box-shadow: inset 0 1px rgba(255,255,255,.72); }
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 1.4rem;
+      padding: .8rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .countdown-item { padding: .15rem .35rem; border: 0; border-radius: 0; background: none; text-align: center; box-shadow: none; }
+    .countdown-item + .countdown-item { border-left: 1px solid var(--line); }
     .countdown-item strong { display: block; color: var(--ink); font: 500 1.15rem 'DM Mono', monospace; }
     .countdown-item span { color: var(--muted); font-size: .62rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 
@@ -841,14 +852,14 @@
       filter: blur(0);
     }
 
-    .form-section h2 { margin-bottom: 2rem; text-align: left; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.04em; }
+    .form-section h2 { max-width: 17ch; margin-bottom: 2rem; text-align: left; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.12; letter-spacing: -.04em; text-wrap: balance; }
     .form-group { margin-bottom: 1.5rem; }
     .form-group label, .attendance-label { color: var(--ink); font-size: .82rem; font-weight: 600; }
     .form-group input[type="text"] {
       padding: 1rem 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
       background: transparent; color: var(--ink); font-size: 1.05rem; backdrop-filter: none;
     }
-    .form-group input[type="text"]::placeholder { color: #9b9b9b; }
+    .form-group input[type="text"]::placeholder { color: #70789e; }
     .form-group input[type="text"]:focus { border-color: var(--coral); box-shadow: 0 2px 0 var(--coral); }
     .form-group textarea {
       width: 100%;
@@ -857,7 +868,7 @@
       padding: 1rem;
       resize: vertical;
       border: 1px solid var(--line);
-      border-radius: .85rem;
+      border-radius: var(--radius-control);
       background: rgba(255,255,255,.34);
       color: var(--ink);
       font: 400 .95rem/1.6 'Be Vietnam Pro', sans-serif;
@@ -865,7 +876,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
       transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
     }
-    .form-group textarea::placeholder { color: rgba(100,107,145,.72); }
+    .form-group textarea::placeholder { color: #70789e; }
     .form-group textarea:focus {
       border-color: var(--coral);
       background: rgba(255,255,255,.52);
@@ -885,7 +896,7 @@
     .attendance-options { gap: .6rem; }
     .attendance-option label {
       min-height: 4rem; margin: 0; padding: .8rem 1rem; border: 1px solid var(--line);
-      border-radius: .85rem; background: rgba(255, 206, 227, .2); color: var(--ink);
+      border-radius: var(--radius-control); background: rgba(255, 206, 227, .2); color: var(--ink);
     }
     .attendance-option label:hover { background: var(--paper-bright); border-color: rgba(38,34,119,.34); transform: translateX(.25rem); }
     .attendance-option input[type="radio"]:focus-visible + label { outline: 3px solid rgba(103,142,201,.35); outline-offset: 2px; }
@@ -894,12 +905,12 @@
     .attendance-option input[type="radio"]:checked + label .option-emoji { background: var(--coral); color: white; }
 
     .submit-btn {
-      padding: 1.05rem 1.25rem; border-radius: .85rem; background: var(--ink); color: var(--paper-bright);
-      font-size: .95rem; letter-spacing: .01em; box-shadow: .35rem .35rem 0 var(--coral);
+      padding: 1.05rem 1.25rem; border-radius: var(--radius-control); background: var(--ink); color: var(--paper-bright);
+      font-size: .95rem; letter-spacing: .01em; box-shadow: 0 .7rem 1.5rem rgba(38,34,119,.18);
     }
     .submit-btn::before { display: none; }
-    .submit-btn:hover { transform: translate(-2px, -2px); box-shadow: .55rem .55rem 0 var(--coral); }
-    .submit-btn:active { transform: translate(.2rem, .2rem); box-shadow: .15rem .15rem 0 var(--coral); }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 .9rem 1.8rem rgba(38,34,119,.24); }
+    .submit-btn:active { transform: translateY(1px) scale(.99); box-shadow: 0 .35rem .8rem rgba(38,34,119,.16); }
     .submit-btn:focus-visible, .back-btn:focus-visible, input:focus-visible { outline: 3px solid rgba(103,142,201,.4); outline-offset: 3px; }
     .error-msg { color: #b73b2b; }
     .spinner { border-color: rgba(255,255,255,.35); border-top-color: white; }
@@ -930,11 +941,11 @@
       .time-block .meta-primary { font-size: 1.35rem; letter-spacing: -.02em; }
       .venue-block .meta-primary { font-size: .78rem; }
       .meta-secondary { margin-top: 0; font-size: .62rem; line-height: 1.35; }
-      .contact-panel { padding: .8rem; }
+      .contact-panel { padding: .8rem 0 0; }
       .contact-heading { align-items: flex-start; flex-direction: column; gap: .25rem; }
       .contact-hint { text-align: left; }
       .contact-list { grid-template-columns: 1fr; }
-      #event-info-card { margin-top: 0; transform: rotate(.5deg); }
+      #event-info-card { margin-top: 0; }
       #survey-card { transform: none; }
       .glass-card { padding: 1.5rem 1.15rem; }
       .thank-you-screen { margin-top: 0; }
@@ -1004,7 +1015,7 @@
         Hãy đến chung vui với mình nha."
       </div>
       <figure class="calendar-art">
-        <img src="assets/graduation-calendar-23-v4.png" alt="Thứ Sáu, ngày 23 tháng 10 năm 2026" width="1536" height="1024" />
+        <img src="assets/graduation-calendar-23-v4.png" alt="Thứ Sáu, ngày 23 tháng 10 năm 2026" width="1536" height="1024" decoding="async" fetchpriority="high" />
       </figure>
       <div class="event-meta">
         <section class="meta-block date-block">
@@ -1260,7 +1271,7 @@
       messageInput.placeholder = copy.messagePlaceholder;
       languageGate.classList.add('is-hidden');
       setupInfoReveal();
-      window.setTimeout(() => nameInput.focus(), 350);
+      window.setTimeout(() => nameInput.focus({ preventScroll: true }), 350);
     }
 
     document.querySelectorAll('[data-language]').forEach((button) => {
@@ -1455,28 +1466,6 @@
       }
     }
 
-    // ===== INITIAL MINI CONFETTI ON LOAD =====
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const colors = ['#FFCEE3', '#678EC9', '#FFD700'];
-        confettiPieces = [];
-        for (let i = 0; i < 40; i++) {
-          confettiPieces.push({
-            x: Math.random() * confettiCanvas.width,
-            y: -20 - Math.random() * 200,
-            w: Math.random() * 8 + 3,
-            h: Math.random() * 5 + 2,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            vx: (Math.random() - 0.5) * 2,
-            vy: Math.random() * 1.5 + 1,
-            rotation: Math.random() * 360,
-            rotationSpeed: (Math.random() - 0.5) * 6,
-            opacity: 0.8
-          });
-        }
-        animateConfetti();
-      }, 600);
-    });
   </script>
 </body>
 </html>
