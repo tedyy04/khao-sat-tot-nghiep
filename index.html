@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khảo sát tham dự Lễ tốt nghiệp | teddy.cr3</title>
-  <meta name="description" content="Khảo sát tham dự lễ tốt nghiệp của Hoàng Hiếu tại Đại học Tôn Đức Thắng, cuối tháng 10/2026." />
+  <title>Thiệp mời Lễ tốt nghiệp của Hoàng Hiếu | teddy.cr3</title>
+  <meta name="description" content="Thiệp mời tham dự lễ tốt nghiệp của Hoàng Hiếu tại Đại học Tôn Đức Thắng, ngày 23 tháng 10 năm 2026." />
   <link rel="icon" type="image/png" href="./icon/2_2.png" />
   <link rel="apple-touch-icon" href="./icon/2_2.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -177,44 +177,6 @@
     @keyframes fadeSlideUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== EVENT INFO ===== */
-    .event-info {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .event-info .info-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 0.95rem;
-    }
-
-    .info-row .icon-circle {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 50%;
-      background: var(--white-15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      border: 1px solid var(--white-20);
-    }
-
-    .info-row .info-text strong {
-      display: block;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .info-row .info-text span {
-      font-size: 0.85rem;
-      color: var(--white-60);
     }
 
     .event-msg {
@@ -738,28 +700,145 @@
     }
     .glass-card > * { position: relative; z-index: 1; }
 
+    .hero { grid-column: 1; grid-row: 1 / span 2; }
+    #event-info-card, #survey-card { grid-column: 2; }
     #event-info-card { margin-top: 5rem; transform: rotate(.6deg); }
     #survey-card { transform: translateX(-1.5rem); }
 
-    .event-info { gap: 0; }
-    .event-info .info-row { align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
-    .event-info .info-row:first-child { padding-top: 0; }
-    .event-info .info-row:last-child { border-bottom: 0; }
-    .info-row .icon-circle {
-      width: 2.25rem; height: 2.25rem; min-width: 2.25rem;
-      padding: .28rem;
-      overflow: hidden;
-      background: var(--ink);
-      border: 1px solid var(--ink);
-      border-radius: .65rem;
-      box-shadow: 0 .35rem .8rem rgba(38,34,119,.1), inset 0 1px rgba(255,255,255,.2);
+    .event-meta {
+      display: grid;
+      grid-template-columns: .85fr .72fr 1.55fr;
+      align-items: stretch;
+      padding: .15rem 0 1.25rem;
+      border-bottom: 1px solid var(--line);
     }
-    .info-row .icon-circle img { width: 100%; height: 100%; display: block; object-fit: contain; filter: brightness(0) invert(1); }
-    .info-row .info-text strong { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
-    .info-row .info-text span { display: block; margin-top: .25rem; color: var(--muted); line-height: 1.55; }
+    .meta-block {
+      --meta-row-gap: .48rem;
+      display: flex;
+      min-width: 0;
+      padding: 0 1.15rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+    }
+    .meta-block:first-child { padding-left: 0; }
+    .meta-block:last-child { padding-right: 0; }
+    .meta-block + .meta-block { border-left: 1px solid rgba(38,34,119,.4); }
+    .meta-label {
+      display: block;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .date-block { justify-content: flex-start; }
+    .meta-block > .meta-label { margin-bottom: var(--meta-row-gap); }
+    .date-main, .meta-content { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--meta-row-gap); }
+    .date-weekday { color: var(--ink); font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .date-day { align-self: center; margin: 0; color: var(--ink); font-size: 3.25rem; font-weight: 700; line-height: .78; letter-spacing: -.08em; }
+    .date-footer { color: var(--muted); font-size: .66rem; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; text-transform: uppercase; }
+    .meta-primary { display: flex; align-self: center; align-items: center; justify-content: center; color: var(--ink); font-weight: 700; letter-spacing: -.04em; }
+    .time-block .meta-primary { font: 700 2rem/1 'Be Vietnam Pro', sans-serif; letter-spacing: -.04em; }
+    .venue-block .meta-primary { font-size: 1.05rem; line-height: 1.2; }
+    .meta-secondary { display: block; margin-top: 0; color: var(--muted); font-size: .75rem; line-height: 1.5; }
+    .contact-panel {
+      margin-top: 1.15rem;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 1rem;
+      background: rgba(255,255,255,.22);
+      box-shadow: inset 0 1px rgba(255,255,255,.75);
+    }
+    .contact-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .75rem;
+    }
+    .contact-heading .meta-label { margin: 0; font-weight: 800; }
+    .contact-hint { color: var(--muted); font-size: .7rem; line-height: 1.45; text-align: right; }
+    .contact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: .3rem .8rem;
+      min-width: 0;
+      padding: .9rem 1rem;
+      border: 1px solid rgba(38,34,119,.14);
+      border-radius: .85rem;
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: 0 .45rem 1rem rgba(38,34,119,.08), inset 0 1px rgba(255,255,255,.72);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .contact-card:hover { transform: translateY(-2px); box-shadow: 0 .7rem 1.4rem rgba(38,34,119,.14), inset 0 1px rgba(255,255,255,.72); }
+    .contact-card-primary {
+      border-color: rgba(38,34,119,.55);
+      background: linear-gradient(135deg, #262277, #3e48a0);
+      color: #fff;
+      box-shadow: 0 .65rem 1.35rem rgba(38,34,119,.24), inset 0 1px rgba(255,255,255,.22);
+    }
+    .contact-card-secondary { background: rgba(255,255,255,.42); }
+    .contact-badge {
+      grid-column: 1 / -1;
+      width: fit-content;
+      padding: .2rem .48rem;
+      border-radius: 999px;
+      background: rgba(38,34,119,.09);
+      font-size: .56rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .contact-card-primary .contact-badge { background: var(--pink); color: var(--ink); }
+    .contact-card strong { font-size: .9rem; line-height: 1.25; }
+    .contact-number { font: 600 .78rem/1.25 'DM Mono', monospace; white-space: nowrap; }
     .event-msg {
-      margin-top: 1.25rem; padding: 1.25rem 0 0; background: none; border: 0;
+      margin: 0 0 1.35rem;
+      padding: 0 0 1.25rem;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: none;
       color: var(--ink); font-size: .9rem; line-height: 1.7;
+    }
+
+    .calendar-art {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      margin: 0 0 1.4rem;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.82);
+      border-radius: 1.25rem;
+      background: rgba(255,255,255,.28);
+      box-shadow: 0 1rem 2.6rem rgba(38,34,119,.2), inset 0 1px rgba(255,255,255,.9);
+    }
+    .calendar-art img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; margin-top: 1.4rem; }
+    .countdown-item { padding: .75rem .35rem; border: 1px solid rgba(255,255,255,.62); border-radius: .75rem; background: rgba(255,255,255,.25); text-align: center; box-shadow: inset 0 1px rgba(255,255,255,.72); }
+    .countdown-item strong { display: block; color: var(--ink); font: 500 1.15rem 'DM Mono', monospace; }
+    .countdown-item span { color: var(--muted); font-size: .62rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+
+    #event-info-card.reveal-prep .info-reveal {
+      opacity: 0;
+      transform: translateY(14px) scale(.99);
+      filter: blur(3px);
+      transition:
+        opacity .65s cubic-bezier(.22, 1, .36, 1),
+        transform .65s cubic-bezier(.22, 1, .36, 1),
+        filter .55s ease;
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform, filter;
+    }
+    #event-info-card.reveal-prep.is-revealed .info-reveal {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
     }
 
     .form-section h2 { margin-bottom: 2rem; text-align: left; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.04em; }
@@ -801,7 +880,7 @@
       font-size: .75rem;
       line-height: 1.5;
     }
-    #message-count { flex: 0 0 auto; font-variant-numeric: tabular-nums; font-family: 'DM Mono', monospace; }
+    #message-count { flex: 0 0 auto; margin-left: auto; font-variant-numeric: tabular-nums; font-family: 'DM Mono', monospace; }
 
     .attendance-options { gap: .6rem; }
     .attendance-option label {
@@ -838,6 +917,23 @@
       .hero::before { margin-bottom: 3rem; }
       .hero h1 { max-width: 9ch; font-size: clamp(3.2rem, 16vw, 4.5rem); }
       .hero .subtitle { font-size: .92rem; }
+      .calendar-art { border-radius: 1rem; }
+      .event-meta { grid-template-columns: .82fr .72fr 1.46fr; padding-bottom: .75rem; }
+      .meta-block { --meta-row-gap: .3rem; padding: 0 .5rem; }
+      .meta-block:first-child { padding-left: 0; }
+      .meta-block:last-child { padding-right: 0; }
+      .meta-block + .meta-block { border-left: 1px solid rgba(38,34,119,.4); border-top: 0; }
+      .meta-label { margin-bottom: 0; font-size: .58rem; letter-spacing: .05em; }
+      .date-weekday { font-size: .55rem; }
+      .date-day { margin: 0; font-size: 2.35rem; }
+      .date-footer { max-width: 100%; font-size: .5rem; line-height: 1.3; white-space: normal; }
+      .time-block .meta-primary { font-size: 1.35rem; letter-spacing: -.02em; }
+      .venue-block .meta-primary { font-size: .78rem; }
+      .meta-secondary { margin-top: 0; font-size: .62rem; line-height: 1.35; }
+      .contact-panel { padding: .8rem; }
+      .contact-heading { align-items: flex-start; flex-direction: column; gap: .25rem; }
+      .contact-hint { text-align: left; }
+      .contact-list { grid-template-columns: 1fr; }
       #event-info-card { margin-top: 0; transform: rotate(.5deg); }
       #survey-card { transform: none; }
       .glass-card { padding: 1.5rem 1.15rem; }
@@ -848,6 +944,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       #confetti-canvas { display: none; }
+      #event-info-card.reveal-prep .info-reveal { opacity: 1; transform: none; filter: none; }
     }
 
     @media (prefers-reduced-transparency: reduce) {
@@ -894,51 +991,74 @@
         <img src="icon/2_2.png" alt="Logo của T3ddy" />
       </div>
       <h1>
-        GRAD of<br/>
-        <span class="name-highlight">Hoàng Hiếu</span>
+        THE NEXT CHAPTER<br/>
+        <span class="name-highlight">of t3ddy</span>
       </h1>
-      <p class="subtitle" data-i18n="subtitle">Khảo sát những con người có thể tham dự Lễ tốt nghiệp của toi!!!</p>
+      <p class="subtitle" data-i18n="subtitle">Tui sắp tốt nghiệp, và tui muốn bạn sẽ xuất hiện trong ngày hôm đó!</p>
     </section>
 
     <!-- ===== EVENT INFO ===== -->
     <div class="glass-card" id="event-info-card">
-      <div class="event-info">
-        <div class="info-row">
-          <div class="icon-circle" aria-hidden="true">
-            <img src="icon/clock.png" alt="" />
-          </div>
-          <div class="info-text">
-            <strong data-i18n="timeLabel">Thời gian</strong>
-            <span data-i18n="timeValue">Cuối tháng 10/2026 (sẽ báo ngày cụ thể ngay khi có lịch nhé kkk)</span>
-          </div>
+      <div class="event-msg" data-i18n="eventMessage">
+        "Mình cứ nghĩ còn xa lắm, cho đến khi ngoảnh lại mới thấy mình đã thật sự đi đến đây rồi. Một ngày để khép lại vài năm tuổi trẻ, và cũng là một ngày mình muốn giữ lại thật lâu trong trí nhớ. Nếu hôm đó có bạn ở đó, ký ức này sẽ đẹp hơn một chút.
+        Hãy đến chung vui với mình nha."
+      </div>
+      <figure class="calendar-art">
+        <img src="assets/graduation-calendar-23-v4.png" alt="Thứ Sáu, ngày 23 tháng 10 năm 2026" width="1536" height="1024" />
+      </figure>
+      <div class="event-meta">
+        <section class="meta-block date-block">
+          <span class="meta-label" data-i18n="dateLabel">Ngày</span>
+          <span class="date-main">
+            <span class="date-weekday" data-i18n="dateWeekday">Thứ Sáu</span>
+            <strong class="date-day">23</strong>
+            <span class="date-footer"><span data-i18n="dateMonth">Tháng 10</span> · 2026</span>
+          </span>
+        </section>
+        <section class="meta-block time-block">
+          <span class="meta-label" data-i18n="timeLabel">Thời gian</span>
+          <span class="meta-content">
+            <strong class="meta-primary">16:00</strong>
+            <span class="meta-secondary" data-i18n="dateZone">GMT+7</span>
+          </span>
+        </section>
+        <section class="meta-block venue-block">
+          <span class="meta-label" data-i18n="locationLabel">Địa điểm</span>
+          <span class="meta-content">
+            <strong class="meta-primary" data-i18n="locationPrimary">Khu nối 2AC, Đại học Tôn Đức Thắng</strong>
+            <span class="meta-secondary" data-i18n="locationValue">19 Nguyễn Hữu Thọ, phường Tân Hưng, TP. Hồ Chí Minh</span>
+          </span>
+        </section>
+      </div>
+      <div class="contact-panel">
+        <div class="contact-heading">
+          <span class="meta-label" data-i18n="contactLabel">Liên hệ</span>
+          <span class="contact-hint" data-i18n="contactHint">Có khó khăn gì thì gọi tui nha!!!</span>
         </div>
-        <div class="info-row">
-          <div class="icon-circle" aria-hidden="true">
-            <img src="icon/location.png" alt="" />
-          </div>
-          <div class="info-text">
-            <strong data-i18n="locationLabel">Địa điểm</strong>
-            <span data-i18n="locationValue">Trường Đại học Tôn Đức Thắng (19 Nguyễn Hữu Thọ, phường Tân Hưng, Quận 7 (cũ), TP. Hồ Chí Minh)</span>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="icon-circle" aria-hidden="true">
-            <img src="icon/calendar-check.png" alt="" />
-          </div>
-          <div class="info-text">
-            <strong data-i18n="eventLabel">Sự kiện</strong>
-            <span data-i18n="eventValue">Buổi Lễ tốt nghiệp của toi!</span>
-          </div>
+        <div class="contact-list">
+          <a class="contact-card contact-card-primary" href="tel:+84906104607">
+            <span class="contact-badge" data-i18n="primaryContact">Số chính</span>
+            <strong>Hoàng Hiếu</strong>
+            <span class="contact-number">0906 104 607</span>
+          </a>
+          <a class="contact-card contact-card-secondary" href="tel:+84942652626">
+            <span class="contact-badge" data-i18n="secondaryContact">Số phụ</span>
+            <strong>Quỳnh Nhi</strong>
+            <span class="contact-number">0942 652 626</span>
+          </a>
         </div>
       </div>
-      <div class="event-msg" data-i18n="eventMessage">
-        "Bốn năm là một hành trình dài, mong bạn sẽ có mặt để cùng mình lưu lại kỷ niệm nhé."
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="countdown-item"><strong id="countdown-days">--</strong><span data-i18n="daysLabel">Ngày</span></div>
+        <div class="countdown-item"><strong id="countdown-hours">--</strong><span data-i18n="hoursLabel">Giờ</span></div>
+        <div class="countdown-item"><strong id="countdown-minutes">--</strong><span data-i18n="minutesLabel">Phút</span></div>
+        <div class="countdown-item"><strong id="countdown-seconds">--</strong><span data-i18n="secondsLabel">Giây</span></div>
       </div>
     </div>
 
     <!-- ===== SURVEY FORM ===== -->
     <div class="glass-card form-section" id="survey-card">
-      <h2 data-i18n="formTitle">Tui khảo sát tí nhee</h2>
+      <h2 data-i18n="formTitle">Cùng tui chụp tấm hình kỷ niệm nha?</h2>
       <form id="rsvp-form" autocomplete="off">
         <div class="form-group">
           <label for="guest-name" data-i18n="nameLabel">Tui hay gọi bạn là gì ta?</label>
@@ -975,9 +1095,9 @@
         </div>
 
         <div class="form-group message-group">
-          <label for="guest-message" data-i18n="messageLabel">Có gì muốn nhắn tui hong? (hong ép buộc ne)</label>
-          <textarea id="guest-message" name="message" rows="4" maxlength="300" placeholder="Viết gì đó ở đây nè..." data-i18n-placeholder="messagePlaceholder"></textarea>
-          <div class="field-hint"><span data-i18n="messageHint">Nếu hong có thì bỏ qua cũng được :((</span><span id="message-count">0/300</span></div>
+          <label for="guest-message" data-i18n="messageLabel">Có gì thắc mắc thì hỏi tui nha!</label>
+          <textarea id="guest-message" name="message" rows="4" maxlength="300" placeholder="Nếu hong có thì bỏ qua cũng được" data-i18n-placeholder="messagePlaceholder"></textarea>
+          <div class="field-hint"><span id="message-count">0/300</span></div>
         </div>
 
         <button type="submit" class="submit-btn" id="submit-btn" data-i18n="submitButton">
@@ -1022,19 +1142,30 @@
     const confettiCanvas = document.getElementById('confetti-canvas');
     const languageGate = document.getElementById('language-gate');
     let currentLanguage = 'vi';
+    let infoRevealInitialized = false;
 
     const translations = {
       vi: {
         skipLink: 'Đi đến phần phản hồi',
-        subtitle: 'Khảo sát những con người có thể tham dự Lễ tốt nghiệp của toi!!!',
+        subtitle: 'Tui sắp tốt nghiệp, và tui muốn bạn sẽ xuất hiện trong ngày hôm đó!',
+        dateLabel: 'Ngày',
+        dateWeekday: 'Thứ Sáu',
+        dateMonth: 'Tháng 10',
+        dateZone: 'GMT+7',
         timeLabel: 'Thời gian',
-        timeValue: 'Cuối tháng 10/2026 (sẽ báo ngày cụ thể ngay khi có lịch nhé kkk)',
         locationLabel: 'Địa điểm',
-        locationValue: 'Trường Đại học Tôn Đức Thắng (19 Nguyễn Hữu Thọ, phường Tân Hưng, Quận 7 (cũ), TP. Hồ Chí Minh)',
-        eventLabel: 'Sự kiện',
-        eventValue: 'Buổi Lễ tốt nghiệp của toi!',
-        eventMessage: '"Bốn năm là một hành trình dài, mong bạn sẽ có mặt để cùng mình lưu lại kỷ niệm nhé."',
-        formTitle: 'Tui khảo sát tí nhee',
+        locationPrimary: 'Khu nối 2AC, Đại học Tôn Đức Thắng',
+        locationValue: '19 Nguyễn Hữu Thọ, phường Tân Hưng, TP. Hồ Chí Minh',
+        contactLabel: 'Liên hệ',
+        contactHint: 'Có khó khăn gì thì gọi tui nha!!!',
+        primaryContact: 'Số chính',
+        secondaryContact: 'Số phụ',
+        eventMessage: '"Mình cứ nghĩ còn xa lắm, cho đến khi ngoảnh lại mới thấy mình đã thật sự đi đến đây rồi. Một ngày để khép lại vài năm tuổi trẻ, và cũng là một ngày mình muốn giữ lại thật lâu trong trí nhớ. Nếu hôm đó có bạn ở đó, ký ức này sẽ đẹp hơn một chút.<br><br>Hãy đến chung vui với mình nha."',
+        daysLabel: 'Ngày',
+        hoursLabel: 'Giờ',
+        minutesLabel: 'Phút',
+        secondsLabel: 'Giây',
+        formTitle: 'Cùng tui chụp tấm hình kỷ niệm nha?',
         nameLabel: 'Tui hay gọi bạn là gì ta?',
         namePlaceholder: 'Ví dụ: Quỳnh Nhi',
         nameError: 'Vui lòng nhập tên của bạn nhé.',
@@ -1043,24 +1174,33 @@
         noOption: 'Tiếc quá, tui hong đến được rồi...',
         maybeOption: 'Để mình suy nghĩ nhaa!!',
         attendanceError: 'Vui lòng chọn một câu trả lời nhé.',
-        messageLabel: 'Có gì muốn nhắn tui hong? (hong ép buộc ne)',
-        messagePlaceholder: 'Viết gì đó ở đây nè...',
-        messageHint: 'Nếu hong có thì bỏ qua cũng được :((',
+        messageLabel: 'Có gì thắc mắc thì hỏi tui nha!',
+        messagePlaceholder: 'Nếu hong có thì bỏ qua cũng được',
         submitButton: 'Gửi phản hồi',
         loading: 'Đang gửi...',
         backButton: '← Gửi lại phản hồi khác'
       },
       en: {
         skipLink: 'Skip to RSVP form',
-        subtitle: 'Just checking who might be able to make it to my graduation!',
-        timeLabel: 'When',
-        timeValue: 'Late October 2026 (I’ll share the exact date as soon as I have it)',
+        subtitle: 'I’m graduating and I’d really love to have you there with me.',
+        dateLabel: 'Date',
+        dateWeekday: 'Friday',
+        dateMonth: 'October',
+        dateZone: 'GMT+7',
+        timeLabel: 'Time',
         locationLabel: 'Where',
-        locationValue: 'Ton Duc Thang University (19 Nguyen Huu Tho Street, Tan Hung Ward, Ho Chi Minh City)',
-        eventLabel: 'What',
-        eventValue: 'My graduation ceremony!',
-        eventMessage: '"Four years has been quite a journey. I’d love to have you there to make one more memory together."',
-        formTitle: 'A quick RSVP',
+        locationPrimary: '2AC connecting area, Ton Duc Thang University',
+        locationValue: '19 Nguyen Huu Tho Street, Tan Hung Ward, Ho Chi Minh City',
+        contactLabel: 'Contact',
+        contactHint: 'Call me if you run into any trouble!!!',
+        primaryContact: 'Primary',
+        secondaryContact: 'Secondary',
+        eventMessage: '"After years of deadlines, I finally made it here. The day would be much more special with you there for a photo and a memory together."',
+        daysLabel: 'Days',
+        hoursLabel: 'Hours',
+        minutesLabel: 'Mins',
+        secondsLabel: 'Secs',
+        formTitle: 'Let’s take a photo together to remember the day?',
         nameLabel: 'What should I call you?',
         namePlaceholder: 'For example: Naomi',
         nameError: 'Please enter your name.',
@@ -1069,14 +1209,41 @@
         noOption: 'Sadly, I can’t make it...',
         maybeOption: 'Not sure yet — let me check!',
         attendanceError: 'Please choose an answer.',
-        messageLabel: 'Want to leave me a message? (optional)',
-        messagePlaceholder: 'Write something here...',
-        messageHint: 'Feel free to leave this blank.',
+        messageLabel: 'Any questions? Just ask me!',
+        messagePlaceholder: 'Feel free to leave this blank',
         submitButton: 'Send my response',
         loading: 'Sending...',
         backButton: '← Send another response'
       }
     };
+
+    function setupInfoReveal() {
+      if (infoRevealInitialized) return;
+      infoRevealInitialized = true;
+
+      const revealItems = eventInfoCard.querySelectorAll(
+        '.event-msg, .calendar-art, .meta-block, .contact-panel, .countdown-item'
+      );
+
+      revealItems.forEach((item, index) => {
+        item.classList.add('info-reveal');
+        item.style.setProperty('--reveal-delay', `${index * 75}ms`);
+      });
+      eventInfoCard.classList.add('reveal-prep');
+
+      const showInfo = () => eventInfoCard.classList.add('is-revealed');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        showInfo();
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        showInfo();
+        observer.disconnect();
+      }, { threshold: .18 });
+      observer.observe(eventInfoCard);
+    }
 
     function setLanguage(language) {
       currentLanguage = language;
@@ -1084,11 +1251,15 @@
       document.documentElement.lang = language;
       document.querySelectorAll('[data-i18n]').forEach((element) => {
         const key = element.dataset.i18n;
-        if (copy[key]) element.textContent = copy[key];
+        if (copy[key]) {
+          if (key === 'eventMessage') element.innerHTML = copy[key];
+          else element.textContent = copy[key];
+        }
       });
       nameInput.placeholder = copy.namePlaceholder;
       messageInput.placeholder = copy.messagePlaceholder;
       languageGate.classList.add('is-hidden');
+      setupInfoReveal();
       window.setTimeout(() => nameInput.focus(), 350);
     }
 
@@ -1099,6 +1270,30 @@
     messageInput.addEventListener('input', () => {
       messageCount.textContent = `${messageInput.value.length}/300`;
     });
+
+    // ===== COUNTDOWN =====
+    const graduationDate = new Date('2026-10-23T16:00:00+07:00');
+    const countdownParts = {
+      days: document.getElementById('countdown-days'),
+      hours: document.getElementById('countdown-hours'),
+      minutes: document.getElementById('countdown-minutes'),
+      seconds: document.getElementById('countdown-seconds')
+    };
+
+    function updateCountdown() {
+      const remaining = Math.max(0, graduationDate.getTime() - Date.now());
+      const days = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining % 86400000) / 3600000);
+      const minutes = Math.floor((remaining % 3600000) / 60000);
+      const seconds = Math.floor((remaining % 60000) / 1000);
+      countdownParts.days.textContent = String(days).padStart(2, '0');
+      countdownParts.hours.textContent = String(hours).padStart(2, '0');
+      countdownParts.minutes.textContent = String(minutes).padStart(2, '0');
+      countdownParts.seconds.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
 
     // ===== FORM SUBMISSION =====
     form.addEventListener('submit', async (e) => {
