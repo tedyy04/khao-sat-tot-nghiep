@@ -418,29 +418,27 @@
     }
 
     .thank-you-screen.has-invite .invite-reveal {
-      display: grid;
-      gap: 1rem;
+      display: block;
       animation: invitePop .72s cubic-bezier(.16, 1, .3, 1) both;
     }
 
-    .invite-preview {
+    .thank-you-screen.has-invite {
       display: block;
-      width: min(100%, 27rem);
-      max-height: 64vh;
-      margin-inline: auto;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 1.4rem;
-      object-fit: contain;
-      box-shadow:
-        0 1.5rem 4rem rgba(38,34,119,.22),
-        inset 0 1px rgba(255,255,255,.78);
     }
 
+    .thank-you-screen.has-invite .invite-reveal {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+
+    .invite-view,
     .invite-download {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      justify-self: center;
       min-height: 3rem;
       padding: .8rem 1.4rem;
       border: 1px solid rgba(255,255,255,.72);
@@ -454,10 +452,30 @@
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
 
+    .invite-view {
+      background: rgba(255,255,255,.58);
+      border-color: rgba(38,34,119,.22);
+      color: var(--ink);
+      box-shadow: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .invite-view:hover {
+      background: rgba(255,255,255,.82);
+      transform: translateY(-2px);
+    }
+
     .invite-download:hover {
       background: #34308f;
       transform: translateY(-2px);
       box-shadow: 0 1rem 2.2rem rgba(38,34,119,.28);
+    }
+
+    .back-btn .back-icon {
+      display: inline-block;
+      flex: 0 0 auto;
+      line-height: 1;
     }
 
     @keyframes invitePop {
@@ -1175,14 +1193,13 @@
       <h2 id="thank-title">Cảm ơn bạn!</h2>
       <p id="thank-message">Mình đã nhận được phản hồi của bạn rồi.</p>
       <div class="invite-reveal" id="invite-reveal">
-        <img
-          class="invite-preview"
-          src="assets/invite.png"
-          alt="Thiệp mời lễ tốt nghiệp của Hoàng Hiếu"
-          width="1080"
-          height="1920"
-          decoding="async"
-        />
+        <a
+          class="invite-view"
+          href="assets/invite.png"
+          target="_blank"
+          rel="noopener"
+          data-i18n="viewInvite"
+        >Xem thiệp mời</a>
         <a
           class="invite-download"
           href="assets/invite.png"
@@ -1190,7 +1207,10 @@
           data-i18n="downloadInvite"
         >Tải thiệp mời</a>
       </div>
-      <button class="back-btn" id="back-btn" data-i18n="backButton"> Gửi lại phản hồi khác</button>
+      <button class="back-btn" id="back-btn">
+        <span class="back-icon" aria-hidden="true">←</span>
+        <span class="back-label" data-i18n="backButton">Gửi lại phản hồi khác</span>
+      </button>
     </div>
 
     <!-- ===== FOOTER ===== -->
@@ -1258,6 +1278,7 @@
         messagePlaceholder: 'Nếu hong có thì bỏ qua cũng được',
         submitButton: 'Gửi phản hồi',
         loading: 'Đang gửi...',
+        viewInvite: 'Xem thiệp mời',
         downloadInvite: 'Tải thiệp mời',
         backButton: '← Gửi lại phản hồi khác'
       },
@@ -1294,6 +1315,7 @@
         messagePlaceholder: 'Feel free to leave this blank',
         submitButton: 'Send my response',
         loading: 'Sending...',
+        viewInvite: 'View invitation',
         downloadInvite: 'Download invitation',
         backButton: '← Send another response'
       }
