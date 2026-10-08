@@ -1280,7 +1280,7 @@
         loading: 'Đang gửi...',
         viewInvite: 'Xem thiệp mời',
         downloadInvite: 'Tải thiệp mời',
-        backButton: '← Gửi lại phản hồi khác'
+        backButton: 'Gửi lại phản hồi khác'
       },
       en: {
         skipLink: 'Skip to RSVP form',
@@ -1317,7 +1317,7 @@
         loading: 'Sending...',
         viewInvite: 'View invitation',
         downloadInvite: 'Download invitation',
-        backButton: '← Send another response'
+        backButton: 'Send another response'
       }
     };
 
@@ -1433,23 +1433,20 @@
         timestamp: new Date().toLocaleString('vi-VN')
       };
 
-      try {
-        if (GOOGLE_SCRIPT_URL) {
-          await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-        }
-
-        // Show thank you
-        showThankYou(attendance.value);
-      } catch (err) {
-        console.error('Submit error:', err);
-        // Still show thank you even if network fails
-        showThankYou(attendance.value);
+      if (GOOGLE_SCRIPT_URL) {
+        // Submit in the background so a slow Apps Script response does not
+        // keep the guest waiting on the loading state.
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).catch((err) => console.error('Submit error:', err));
       }
+
+      // The payload continues sending while the confirmation appears instantly.
+      showThankYou(attendance.value);
     });
 
     // ===== THANK YOU DISPLAY =====
