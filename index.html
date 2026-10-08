@@ -776,19 +776,19 @@
 
     .event-meta {
       display: grid;
-      grid-template-columns: .85fr .72fr 1.55fr;
+      grid-template-columns: .95fr .82fr 1.65fr;
       align-items: stretch;
-      padding: .15rem 0 1.25rem;
+      padding: .25rem 0 1.35rem;
       border-bottom: 1px solid var(--line);
     }
     .meta-block {
-      --meta-row-gap: .48rem;
-      display: flex;
+      --meta-row-gap: .68rem;
+      display: grid;
+      grid-template-rows: 1.1rem 1fr;
       min-width: 0;
-      padding: 0 1.15rem;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      min-height: 9rem;
+      padding: 0 1.2rem;
+      align-items: stretch;
       text-align: center;
     }
     .meta-block:first-child { padding-left: 0; }
@@ -800,12 +800,19 @@
       color: var(--muted);
       font-size: .7rem;
       font-weight: 600;
+      line-height: 1.1rem;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
-    .date-block { justify-content: flex-start; }
-    .meta-block > .meta-label { margin-bottom: var(--meta-row-gap); }
-    .date-main, .meta-content { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--meta-row-gap); }
+    .meta-block > .meta-label { align-self: start; }
+    .date-main, .meta-content {
+      display: flex;
+      min-height: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--meta-row-gap);
+    }
     .date-weekday { color: var(--ink); font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
     .date-day { align-self: center; margin: 0; color: var(--ink); font-size: 3.25rem; font-weight: 700; line-height: .78; letter-spacing: -.08em; }
     .date-footer { color: var(--muted); font-size: .66rem; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; text-transform: uppercase; }
@@ -1001,15 +1008,20 @@
       .hero .subtitle { font-size: .92rem; }
       .calendar-art { border-radius: 1rem; }
       .event-meta { grid-template-columns: .82fr .72fr 1.46fr; padding-bottom: .75rem; }
-      .meta-block { --meta-row-gap: .3rem; padding: 0 .5rem; }
+      .meta-block {
+        --meta-row-gap: .34rem;
+        grid-template-rows: .9rem 1fr;
+        min-height: 7.1rem;
+        padding: 0 .5rem;
+      }
       .meta-block:first-child { padding-left: 0; }
       .meta-block:last-child { padding-right: 0; }
       .meta-block + .meta-block { border-left: 1px solid rgba(38,34,119,.4); border-top: 0; }
-      .meta-label { margin-bottom: 0; font-size: .58rem; letter-spacing: .05em; }
+      .meta-label { margin-bottom: 0; font-size: .58rem; line-height: .9rem; letter-spacing: .05em; }
       .date-weekday { font-size: .55rem; }
-      .date-day { margin: 0; font-size: 2.35rem; }
+      .date-day { margin: 0; font-size: 2.7rem; }
       .date-footer { max-width: 100%; font-size: .5rem; line-height: 1.3; white-space: normal; }
-      .time-block .meta-primary { font-size: 1.35rem; letter-spacing: -.02em; }
+      .time-block .meta-primary { font-size: 1.55rem; letter-spacing: -.02em; }
       .venue-block .meta-primary { font-size: .78rem; }
       .meta-secondary { margin-top: 0; font-size: .62rem; line-height: 1.35; }
       .contact-panel { padding: .8rem 0 0; }
